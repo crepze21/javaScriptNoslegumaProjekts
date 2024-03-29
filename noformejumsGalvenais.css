@@ -12,3 +12,30 @@ h1{
     margin: 0%;
     background-color: #04364A;
 }
+.ievade{
+    color: white;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.laiksLidzIesniegsanai{
+    margin-top: 100px;
+}
+.pulkstens{
+    margin-top: 0%;
+    color: white;
+    font-size: 100px;
+}
+.pulkstenaTeksts{
+    padding-left: 10px;
+    margin-top: 100px;
+    text-align: center;
+    width: 600px;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+}
+.nakamaLapa{
+    font-size: xx-large;
+    margin-left: 90%;
+}

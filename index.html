@@ -12,6 +12,36 @@
 <body>
     <h1>Cik ilgi vēl  atlicis līdz mājasdarba vai projekta iesniegšanas</h1>
     <p class="kaste1"></p>
+    <table class="ievade">
+        <tr>
+            <td class="ievadeDatumsTeksts">Ievadiet beigu datumu šeit (dd:mm:gg)</td>
+            <td>
+                <input type="text" id="datums" class="ievadeDatumsIevade"></input>
+            </td>
+            <td>
+                <button onclick="datums()">Iestatīt</button>
+            </td>
+        </tr>
+        <tr>
+            <td class="ievadeLaiksTeksts">Ievadiet beigu laiku šeit (piemēram 12:00)</td>
+            <td>
+                <input type="text" id="laiks" class="ievadeLaiksIevade"></input>
+            </td>
+            <td>
+                <button onclick="laiks()">Iestatīt</button>
+            </td>
+        </tr>
+    </table>
+    <h1 class="laiksLidzIesniegsanai">Laiks līdz iesniegšanai:</h1>
+    <table class="pulkstenaTeksts">
+        <tr>
+            <td>Stundas</td>
+            <td>Minūtes</td>
+            <td>Sekundes</td>
+        </tr>
+    </table>
+    <p class="pulkstens" id="pulkstens"> 00 : 00 : 00</p>
+    <button class="nakamaLapa" onclick="nakamaLapa()">Tests</button>
     <script src="javaScripGalvenais.js"></script>
 </body>
 </html>
