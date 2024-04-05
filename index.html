@@ -33,14 +33,23 @@
         </tr>
     </table>
     <h1 class="laiksLidzIesniegsanai">Laiks līdz iesniegšanai:</h1>
-    <table class="pulkstenaTeksts">
-        <tr>
+    <table class="pulkstenaTabula">
+        <tr class="pulkstenaStunMinSekTeksts">
             <td>Stundas</td>
+            <td></td>
             <td>Minūtes</td>
+            <td></td>
             <td>Sekundes</td>
         </tr>
+        <tr class = "laikaAtskaite">
+            <td><p class="stundas" id="stundas"> 00 </p></td>
+            <td>:</td>
+            <td><p class="minutes" id="minutes"> 00 </p></td>
+            <td>:</td>
+            <td><p class="sekundes" id="sekundes"> 00 </p></td>
+        </tr>
     </table>
-    <p class="pulkstens" id="pulkstens"> 00 : 00 : 00</p>
+    
     <button class="nakamaLapa" onclick="nakamaLapa()">Tests</button>
     <script src="javaScripGalvenais.js"></script>
 </body>
