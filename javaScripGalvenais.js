@@ -2,6 +2,8 @@ window.addEventListener("load", () => {
     pulkstenis()
     function pulkstenis(){
         const today = new Date()
+
+        
         const stundas = today.getHours()
         const minutes = today.getMinutes()
         const sekundes = today.getSeconds()
@@ -9,26 +11,24 @@ window.addEventListener("load", () => {
         const menesi = today.getMonth()
         const dienas = today.getDay()
         
-
+        //Pievieno nuli priekšā, ja vajag
         const stunda = stundas < 10 ? "0" + stundas : stundas;
         const minute = minutes < 10 ? "0" + minutes : minutes;
         const sekunde = sekundes < 10 ? "0" + sekundes : sekundes;
-        const menesuDienuSkaits = {
-            janvaris : 31,
-            februaris : 28,
-            marts : 31,
-            aprilis : 30,
-            maijs : 31,
-            junijs : 30,
-            julijs : 31,
-            augusts : 31,
-            septembris : 30,
-            oktobris : 31,
-            novembris : 30,
-            decembris : 31}
+
+        //izreiķina, vai ir pilnais Februāris vai nepilnais
+        if (gadi % 4 == 0){
+            februarisParaNepara = 29
+        }
+        else(
+            februarisParaNepara = 28
+        )
+        
+        //Janvāris, Februāris, Marts, Aprīlis, Maijs, Jūnijs, Jūlijs, Augusts, Septembris, Oktobris, Novembris, Decembris
+        const menesuDienuSkaits = [31,februarisParaNepara,31,30,31,30,31,31,30,31,30,31]
         
         
-        //let istaisLaiks = `${stunda}:${minute}:${sekunde}
+        
         document.getElementById("stundas").innerHTML = stunda;
         document.getElementById("minutes").innerHTML = minute;
         document.getElementById("sekundes").innerHTML = sekunde;
@@ -39,7 +39,15 @@ window.addEventListener("load", () => {
 
 function datums(){
     
+    const neapstradatsDatums = datumsIevade.value
+    console.log(neapstradatsDatums)
+    const ievaditaisStringDatums = neapstradatsDatums.split(":")
+
+    return  ievaditaisDatums = ievaditaisStringDatums.map(function(numurs){return parseInt(numurs, 10)})
+    
+    
 }
+
 function laiks(){
     
 }
