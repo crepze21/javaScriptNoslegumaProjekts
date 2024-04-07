@@ -2,6 +2,7 @@ window.addEventListener("load", () => {
     pulkstenis()
     function pulkstenis(){
         const today = new Date()
+        
 
         
         const stundas = today.getHours()
@@ -33,14 +34,19 @@ window.addEventListener("load", () => {
         document.getElementById("minutes").innerHTML = minute;
         document.getElementById("sekundes").innerHTML = sekunde;
 
+
+
+ 
+        
+
         setTimeout(pulkstenis, 1000);
     }
   })
 
 function datums(){
-    
+    let ievaditaisDatums
     const neapstradatsDatums = datumsIevade.value
-    console.log(neapstradatsDatums)
+    //diena, mēnesis, gads
     const ievaditaisStringDatums = neapstradatsDatums.split(":")
 
     return  ievaditaisDatums = ievaditaisStringDatums.map(function(numurs){return parseInt(numurs, 10)})
@@ -48,9 +54,16 @@ function datums(){
     
 }
 
+
+
 function laiks(){
-    
+    let ievaditaisLaiks
+    const neapstradatsLaiks = laiksIevade.value
+
+    const ievaditaisStringLaiks = neapstradatsLaiks.split(":")
+    return ievaditaisLaiks = ievaditaisStringLaiks.map(function(numurs){return parseInt(numurs, 10)})
 }
+
 function nakamaLapa(){
     window.location.href = "./otraLapa.html";
 }
