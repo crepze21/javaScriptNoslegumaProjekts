@@ -1,96 +1,61 @@
-window.addEventListener("load", () => {
-    pulkstenis()
-    function pulkstenis(){
-        const today = new Date()
-        
 
-        
-        const stundas = today.getHours()
-        const minutes = today.getMinutes()
-        const sekundes = today.getSeconds()
-        const gadi = today.getFullYear()
-        const menesi = today.getMonth()
-        const dienas = today.getDay()
-        
-        //Pievieno nuli priekšā, ja vajag
-        const stunda = stundas < 10 ? "0" + stundas : stundas;
-        const minute = minutes < 10 ? "0" + minutes : minutes;
-        const sekunde = sekundes < 10 ? "0" + sekundes : sekundes;
 
-        //izreiķina, vai ir pilnais Februāris vai nepilnais
-        if (gadi % 4 == 0){
-            februarisParaNepara = 29
-        }
-        else(
-            februarisParaNepara = 28
-        )
-        
-        //Janvāris, Februāris, Marts, Aprīlis, Maijs, Jūnijs, Jūlijs, Augusts, Septembris, Oktobris, Novembris, Decembris
-        const menesuDienuSkaits = [31,februarisParaNepara,31,30,31,30,31,31,30,31,30,31]
-        
-        
-        ievaditaisLaiks = laiks()
-        console.log(ievaditaisLaiks)
-        
-        document.getElementById("stundas").innerHTML = ievaditaisLaiks[0] - stunda
-        document.getElementById("minutes").innerHTML = ievaditaisLaiks[1] - minute
-        document.getElementById("sekundes").innerHTML = 60 - sekunde
 
- 
-
-        
-
- 
-        
-
-        setTimeout(pulkstenis, 1000);
-
-    }
-  })
+let atskaite
 
 function datums(){
-    let ievaditaisDatums
-    const neapstradatsDatums = datumsIevade.value
-    //diena, mēnesis, gads
-    if (isNaN(neapstradatsDatums)){
-    const ievaditaisStringDatums = neapstradatsDatums.split(":")
-    let pagaiduCipars
+  
+  //Izdzēš veco atskaiti, ja tāda ir bijusi
+  if (atskaite){
+    clearInterval(atskaite)
+    document.getElementById('dienas').innerHTML = '00'
+    document.getElementById('stundas').innerHTML = '00'
+    document.getElementById('minutes').innerHTML = '00'
+    document.getElementById('sekundes').innerHTML = '00'
+  }
+  
+//Beigu termiņš
+let termins = new Date(datumsIevade.value+'T'+laiksIevade.value||'08:00'+':00').getTime()
+console.log(termins)
+console.log(datumsIevade.value+'T'+laiksIevade||'08:00'+':00')
 
-    ievaditaisDatums = ievaditaisStringDatums.map(function(numurs){return parseInt(numurs, 10)})
+//šis kods katru sekundi atkārtojās
+atskaite = setInterval(function() {
+  //Dabū tagadējo laiku un datumu
+  const tagadejaisLaiks = new Date().getTime()
+
+  //Apreiķina atlikušo laiku
+  const distance = termins - tagadejaisLaiks
+
+  //Izreiķina dienas, stundas, minūtes un sekundes līdz beigu termiņam
+  const dienas = Math.floor(distance / (1000 * 60 * 60 * 24))
+  const stundas = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+  const sekundes = Math.floor((distance % (1000 * 60)) / 1000)
+
+  //Pārbaudai, vai distance ir negatīva
+  
+  if (distance < 0 || isNaN(distance)){
+    clearInterval(atskaite)
+    alert(`Lūdzu ievadiet datumu vēlreiz`)
+    return null
+  }
+    //Pievieno nulli prikšā, ja vajag
+    const stunda = stundas < 10 ? "0" + stundas : stundas
+    const minute = minutes < 10 ? "0" + minutes : minutes
+    const sekunde = sekundes < 10 ? "0" + sekundes : sekundes
+    const diena = dienas < 10 ? "0" + dienas : dienas
+
+    //Dabū elemntus un parāda atskaiti
+    document.getElementById('dienas').innerHTML = diena
+    document.getElementById('stundas').innerHTML = stunda
+    document.getElementById('minutes').innerHTML = minute
+    document.getElementById('sekundes').innerHTML = sekunde
+
+  //Ja beidzās atskaite, tad šis "if" pārtrauc programmu
+  if (distance < 0) {
+    clearInterval(atskaite)
+    return null
    
-   if(ievaditaisDatums[1] == 00 || ievaditaisDatums[1] == 0)
-   {
-        if(ievaditaisDatums[1] > 60 || ievaditaisDatums[0] > 24){
-            alert(`Nepareizi ievadīts laiks, lūdzu meiģiniet vēlreiz`)
-            }
-        else{
-            ievaditaisDatums.pop()
-            ievaditaisDatums.push(60)
-        }
-        
-    }   
-    else{
-        return ievaditaisDatums = [0,0,0]
-    }
-    
-}}
-
-
-
-function laiks(){
-    let ievaditaisLaiks
-    const neapstradatsLaiks = laiksIevade.value
-    if (isNaN(neapstradatsLaiks)){
-        const ievaditaisStringLaiks = neapstradatsLaiks.split(":")
-        return ievaditaisLaiks = ievaditaisStringLaiks.map(function(numurs){return parseInt(numurs, 10)})
-    }
-    else{
-        return ievaditaisLaiks = [0,0]
-    }
-
-    
-}
-
-function nakamaLapa(){
-    window.location.href = "./otraLapa.html";
-}
+  }
+}, 1000)}

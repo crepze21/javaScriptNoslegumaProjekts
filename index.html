@@ -14,12 +14,12 @@
     <p class="kaste1"></p>
     <table class="ievade">
         <tr>
-            <td class="ievadeDatumsTeksts">Ievadiet beigu datumu šeit (dd:mm:gggg)</td>
+            <td class="ievadeDatumsTeksts">Ievadiet beigu datumu šeit (gads-mēnesis-diena)</td>
             <td>
                 <input type="text" id="datumsIevade" class="ievadeDatumsIevade"></input>
             </td>
-            <td>
-                <button onclick="datums()">Iestatīt</button>
+            <td rowspan="2">
+                <button onclick="datums()" class="pogaDatums">Iestatīt</button>
             </td>
         </tr>
         <tr>
@@ -27,14 +27,14 @@
             <td>
                 <input type="text" id="laiksIevade" class="ievadeLaiksIevade"></input>
             </td>
-            <td>
-                <button onclick="laiks()">Iestatīt</button>
-            </td>
+          
         </tr>
     </table>
     <h1 class="laiksLidzIesniegsanai">Laiks līdz iesniegšanai:</h1>
     <table class="pulkstenaTabula">
         <tr class="pulkstenaStunMinSekTeksts">
+            <td>Dienas</td>
+            <td></td>
             <td>Stundas</td>
             <td></td>
             <td>Minūtes</td>
@@ -42,6 +42,8 @@
             <td>Sekundes</td>
         </tr>
         <tr class = "laikaAtskaite">
+            <td><p class="dienas" id="dienas"> 00 </p></td>
+            <td>:</td>
             <td><p class="stundas" id="stundas"> 00 </p></td>
             <td>:</td>
             <td><p class="minutes" id="minutes"> 00 </p></td>
