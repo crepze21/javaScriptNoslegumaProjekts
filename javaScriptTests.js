@@ -1,57 +1,41 @@
-window.addEventListener("load", () => {
-    clock();
-    function clock() {
-      const today = new Date();
-  
-      // get time components
-      const hours = today.getHours();
-      const minutes = today.getMinutes();
-      const seconds = today.getSeconds();
-  
-      //add '0' to hour, minute & second when they are less 10
-      const hour = hours < 10 ? "0" + hours : hours;
-      const minute = minutes < 10 ? "0" + minutes : minutes;
-      const second = seconds < 10 ? "0" + seconds : seconds;
-  
-    //   //make clock a 12-hour time clock
-    //   const hourTime = hour > 12 ? hour - 12 : hour;
-  
-    //   // if (hour === 0) {
-    //   //   hour = 12;
-    //   // }
-    //   //assigning 'am' or 'pm' to indicate time of the day
-    //   const ampm = hour < 12 ? "AM" : "PM";
-  
-      // get date components
-      const month = today.getMonth();
-      const year = today.getFullYear();
-      const day = today.getDate();
-  
-      //declaring a list of all months in  a year
-      const monthList = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December"
-      ];
-  
-      //get current date and time
-      const date = monthList[month] + " " + day + ", " + year;
-      const time = hours + ":" + minute + ":" + second;
-  
-      //combine current date and time
-      const dateTime = date + " - " + time;
-  
-      //print current date and time to the DOM
-      document.getElementById("date-time").innerHTML = dateTime;
-      setTimeout(clock, 1000);
+
+let atbildes = 0;
+
+function rezultats() {
+    let pirmaisjValue = document.querySelector('input[name="pirmaisj"]:checked').value;
+    let otraisjValue = document.querySelector('input[name="otraisj"]:checked').value;
+    let tresaisjValue = document.querySelector('input[name="tresaisj"]:checked').value;
+    let ceturtaisjValue = document.querySelector('input[name="ceturtaisj"]:checked').value;
+
+    if (pirmaisjValue == "ja1") {
+        atbildes++;
+    } else if (pirmaisjValue == "ne1") {
+        atbildes--;
     }
-  });
+
+    if (otraisjValue == "ja2") {
+        atbildes++;
+    } else if (otraisjValue == "ne2") {
+        atbildes--;
+    }
+
+    if (tresaisjValue == "ja3") {
+        atbildes++;
+    } else if (tresaisjValue == "ne3") {
+        atbildes--;
+    }
+
+    if (ceturtaisjValue == "ja4") {
+        atbildes++;
+    } else if (ceturtaisjValue == "ne4") {
+        atbildes--;
+    }
+
+    if (atbildes > 0) {
+        alert("Tu esi Prokastrinējoš cilvēks un tev patīk visu vienmēr atlikt līdz pēdējam brīdim");
+    } else if (atbildes == 0) {
+        alert("Tu esi starp šīm abām īpašībam un tev piemīt abu to īpašības");
+    } else if (atbildes < 0) {
+        alert("Tu esi pirmskastrinējoš cilvēks un tev vienmēr patīk visu darīt laicīgi");
+    }
+}
