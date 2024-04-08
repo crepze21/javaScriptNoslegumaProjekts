@@ -39,3 +39,7 @@ function rezultats() {
         alert("Tu esi pirmskastrinējoš cilvēks un tev vienmēr patīk visu darīt laicīgi");
     }
 }
+
+function nakamaLapa(){
+    window.location.href = "./index.html";
+}

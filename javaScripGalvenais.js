@@ -59,3 +59,7 @@ atskaite = setInterval(function() {
    
   }
 }, 1000)}
+
+function nakamaLapa(){
+  window.location.href = "./otraLapa.html";
+}
