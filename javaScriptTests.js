@@ -1,3 +1,4 @@
+
 let atbildes = 0;
 
 function rezultats() {
